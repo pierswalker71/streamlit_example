@@ -45,7 +45,9 @@ def main():
     st.subheader('Data Modification') 
     #st.slider('Consecutive subset', 0, len(data.index), 1) 
     
-    row_ids_to_delete = st.multiselect('Select row IDs to delete',options=data.index,default=data.index.min())
+    row_ids_to_delete = st.multiselect('Select row IDs to delete',
+                                       options=st.session_state['data'].index,
+                                       default=st.session_state['data'].index.min())
     
     submit = False
     submit = st.button('Delete rows')  
@@ -53,7 +55,10 @@ def main():
         st.session_state['data'] .drop(row_ids_to_delete,inplace=True)
     
     
-    #abc = st.number_input('Row ID to deleteows',min_value=data.index.min(), max_value=data.index.max(), value=data.index.max())
+    #abc = st.number_input('Row ID to deleteows',
+    #                       min_value=st.session_state['data'].index.min(),
+    #                       max_value=st.session_state['data'].index.max(),
+    #                       value=st.session_state['data'].index.max())
     
 if __name__ == '__main__':
     main()
