@@ -15,8 +15,8 @@ def main():
 
     # Title
     st.title('Example Streamlit App')
-    st.write('Piers Walker 2022')
-    st.write('This is a simple Streamlit App example which demonstrates the application of hosting an App on Streamlit, interfacing with public code hosted on Github')
+    st.write('Piers Walker 2022. https://github.com/pierswalker71')
+    st.write('This is a simple Streamlit App example. It demonstrates the application of hosting an App on Streamlit interfacing with my public code hosted on Github')
 
     # Data
     st.subheader('Create data table') 
@@ -36,7 +36,7 @@ def main():
     st.subheader('Data Modification') 
     #st.slider('Consecutive subset', 0, len(data.index), 1) 
     
-    row_ids_to_delete = st.multiselect('Select row IDs to delete')
+    row_ids_to_delete = st.multiselect('Select row IDs to delete',default=data.index.max())
     
     submit = False
     submit = st.button('Delete rows')  
