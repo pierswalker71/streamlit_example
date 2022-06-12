@@ -15,9 +15,9 @@ def main():
     
     #initialisation
     if 'data_original' not in st.session_state:
-        st.session_state['data_original] = pd.DataFrame()
+        st.session_state['data_original'] = pd.DataFrame()
     if 'data' not in st.session_state:
-        st.session_state['data] = pd.DataFrame()
+        st.session_state['data'] = pd.DataFrame()
 
     # Title
     st.title('Example Streamlit App')
@@ -30,13 +30,13 @@ def main():
     num_rows_required = st.number_input('Number of rows',min_value=5, max_value=50, value=5)
     
     #st.subheader('Display current data') 
-    st.session_state['data_original] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=int(num_rows_required)).tolist(), 
+    st.session_state['data_original'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=int(num_rows_required)).tolist(), 
                                 'Param2':np.random.uniform(low=50, high=100, size=int(num_rows_required)).tolist()})
     
     with st.expander('Original data'):
         st.dataframe(data_original)
     
-    data = data_original.copy()
+    st.session_state['data']  = st.session_state['data_original'].copy()
     
     with st.expander('Current data'):
         st.dataframe(data)
@@ -50,7 +50,7 @@ def main():
     submit = False
     submit = st.button('Delete rows')  
     if submit:    
-        data.drop(row_ids_to_delete,inplace=True)
+        st.session_state['data'] .drop(row_ids_to_delete,inplace=True)
     
     
     #abc = st.number_input('Row ID to deleteows',min_value=data.index.min(), max_value=data.index.max(), value=data.index.max())
