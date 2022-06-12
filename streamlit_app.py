@@ -4,22 +4,25 @@ import streamlit as st
 def main():
     import pandas as pd
     import numpy as np
+    from random import random 
     
     st.set_page_config(page_title = 'Colour Blindness', initial_sidebar_state = 'expanded') 
-    hide_streamlit_style = """
-                           <style>
-                           footer {visibility: hidden;}
-                           </style>
-                           """
+
 
     # Title
     st.title('Title')
     st.write('Piers Walker 2022')
 
     # Data
-    df = pd.DataFrame(data = {'Param1':['a', 'b', 'c', 'd'], 'Param2':[10, 15, 20, 25]})
+    st.subheader('Display current data') 
+    data = pd.DataFrame(data = {'Param1':['a', 'b', 'c', 'd'], 'Param2':[10, 15, 20, 25]})
+    st.dataframe(data)
+    
+    st.subheader('Select ') 
+    
+    st.slider('Consecutive subset', 0, len(data.index), 1) 
 
-    st.dataframe(df)
+    
     
 if __name__ == '__main__':
     main()
