@@ -17,7 +17,8 @@ def main():
     #if 'data_original' not in st.session_state:
     #    st.session_state['data_original'] = pd.DataFrame()
     if 'data' not in st.session_state:
-        st.session_state['data'] = pd.DataFrame()
+        st.session_state['data'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=10).tolist(), 
+                                'Param2':np.random.uniform(low=50, high=100, size=10).tolist()})
 
     # Title
     st.title('Example Streamlit App')
@@ -29,9 +30,9 @@ def main():
     
     #num_rows_required = st.number_input('Number of rows',min_value=5, max_value=50, value=5)
     
-    #st.subheader('Display current data') 
-    st.session_state['data'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=10).tolist(), 
-                                'Param2':np.random.uniform(low=50, high=100, size=10).tolist()})
+    #st.subheader('Load data') 
+    #st.session_state['data'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=10).tolist(), 
+    #                            'Param2':np.random.uniform(low=50, high=100, size=10).tolist()})
     
     #with st.expander('Original data'):
     #    st.dataframe(st.session_state['data_original'])
@@ -45,7 +46,7 @@ def main():
     st.subheader('Data Modification') 
     #st.slider('Consecutive subset', 0, len(data.index), 1) 
     
-    with st.expander('Original data'):
+    with st.expander('Delete rows'):
         row_ids_to_delete = st.multiselect('Select row IDs to delete',
                                            options=st.session_state['data'].index,
                                            default=st.session_state['data'].index.min())
