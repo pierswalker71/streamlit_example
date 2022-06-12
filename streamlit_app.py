@@ -6,6 +6,9 @@ def main():
     import pandas as pd
     import numpy as np
     from random import random 
+    import sklearn.datasets
+    
+    
     
     # Settings
     st.set_page_config(page_title = 'Example App', initial_sidebar_state = 'expanded') 
@@ -22,6 +25,9 @@ def main():
     data = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=num_rows_required).tolist(), 
                                 'Param2':np.random.uniform(low=50, high=100, size=num_rows_required).tolist()})
     st.dataframe(data)
+    
+    iris_dataset = sklearn.datasets.load_iris()
+    st.dataframe(iris_dataset)
                                 
     #st.write(np.random.uniform(low=0, high=10, size=num_rows_required).tolist())
     
