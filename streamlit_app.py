@@ -20,7 +20,7 @@ def main():
     num_rows_required = st.number_input('Number of rows')
     st.subheader('Display current data') 
     data = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=num_rows_required).tolist()}, 
-                                'Param2':np.random.uniform(low=50, high=100, size=num_rows_required).tolist()})
+                                {'Param2':np.random.uniform(low=50, high=100, size=num_rows_required).tolist()})
     st.dataframe(data)
                                 
     #st.write(np.random.uniform(low=0, high=10, size=num_rows_required).tolist())
