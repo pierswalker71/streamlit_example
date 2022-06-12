@@ -1,4 +1,3 @@
 import pandas as pd
-test_x = [1,2,3]
-df = pd.DataFrame(test_x, columns = ['a','b','c'])
+df = pd.DataFrame(data = {'Param1':['a', 'b', 'c', 'd'], 'Param2':[10, 15, 20, 25]})
 st.write(df)
