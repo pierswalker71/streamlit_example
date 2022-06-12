@@ -12,6 +12,12 @@ def main():
     
     # Settings
     st.set_page_config(page_title = 'Example App', initial_sidebar_state = 'expanded') 
+    
+    #initialisation
+    if 'data_original' not in st.session_state:
+        st.session_state['data_original] = pd.DataFrame()
+    if 'data' not in st.session_state:
+        st.session_state['data] = pd.DataFrame()
 
     # Title
     st.title('Example Streamlit App')
@@ -24,8 +30,8 @@ def main():
     num_rows_required = st.number_input('Number of rows',min_value=5, max_value=50, value=5)
     
     #st.subheader('Display current data') 
-    data_original = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=num_rows_required).tolist(), 
-                                'Param2':np.random.uniform(low=50, high=100, size=num_rows_required).tolist()})
+    st.session_state['data_original] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=int(num_rows_required)).tolist(), 
+                                'Param2':np.random.uniform(low=50, high=100, size=int(num_rows_required)).tolist()})
     
     with st.expander('Original data'):
         st.dataframe(data_original)
