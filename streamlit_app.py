@@ -6,6 +6,11 @@ def main():
     import numpy as np
     
     st.set_page_config(page_title = 'Colour Blindness', initial_sidebar_state = 'expanded') 
+    hide_streamlit_style = """
+                           <style>
+                           footer {visibility: hidden;}
+                           </style>
+                           """
 
     # Title
     st.title('Title')
