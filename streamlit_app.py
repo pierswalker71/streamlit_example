@@ -34,12 +34,12 @@ def main():
                                 'Param2':np.random.uniform(low=50, high=100, size=int(num_rows_required)).tolist()})
     
     with st.expander('Original data'):
-        st.dataframe(data_original)
+        st.dataframe(st.session_state['data_original'])
     
     st.session_state['data']  = st.session_state['data_original'].copy()
     
     with st.expander('Current data'):
-        st.dataframe(data)
+        st.dataframe(st.session_state['data'])
                                     
     
     st.subheader('Data Modification') 
