@@ -14,7 +14,7 @@ def main():
     # Data
     df = pd.DataFrame(data = {'Param1':['a', 'b', 'c', 'd'], 'Param2':[10, 15, 20, 25]})
 
-    st.write(df)
+    st.dataframe(df)
     
 if __name__ == '__main__':
     main()
