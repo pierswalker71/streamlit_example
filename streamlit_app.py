@@ -14,8 +14,8 @@ def main():
     st.set_page_config(page_title = 'Example App', initial_sidebar_state = 'expanded') 
     
     #initialisation
-    if 'data_original' not in st.session_state:
-        st.session_state['data_original'] = pd.DataFrame()
+    #if 'data_original' not in st.session_state:
+    #    st.session_state['data_original'] = pd.DataFrame()
     if 'data' not in st.session_state:
         st.session_state['data'] = pd.DataFrame()
 
@@ -27,16 +27,16 @@ def main():
     # Data
     st.subheader('Create data table') 
     
-    num_rows_required = st.number_input('Number of rows',min_value=5, max_value=50, value=5)
+    #num_rows_required = st.number_input('Number of rows',min_value=5, max_value=50, value=5)
     
     #st.subheader('Display current data') 
-    st.session_state['data_original'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=int(num_rows_required)).tolist(), 
-                                'Param2':np.random.uniform(low=50, high=100, size=int(num_rows_required)).tolist()})
+    st.session_state['data'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=10).tolist(), 
+                                'Param2':np.random.uniform(low=50, high=100, size=10).tolist()})
     
-    with st.expander('Original data'):
-        st.dataframe(st.session_state['data_original'])
+    #with st.expander('Original data'):
+    #    st.dataframe(st.session_state['data_original'])
     
-    st.session_state['data']  = st.session_state['data_original'].copy()
+    #st.session_state['data']  = st.session_state['data_original'].copy()
     
     with st.expander('Current data'):
         st.dataframe(st.session_state['data'])
@@ -45,14 +45,16 @@ def main():
     st.subheader('Data Modification') 
     #st.slider('Consecutive subset', 0, len(data.index), 1) 
     
-    row_ids_to_delete = st.multiselect('Select row IDs to delete',
-                                       options=st.session_state['data'].index,
-                                       default=st.session_state['data'].index.min())
+    with st.expander('Original data'):
+        row_ids_to_delete = st.multiselect('Select row IDs to delete',
+                                           options=st.session_state['data'].index,
+                                           default=st.session_state['data'].index.min())
     
-    submit = False
-    submit = st.button('Delete rows')  
-    if submit:    
-        st.session_state['data'] .drop(row_ids_to_delete,inplace=True)
+        submit_delete = False
+        submit_delete = st.button('Delete rows')  
+        
+    if submit_delete:    
+        st.session_state['data'] = st.session_state['data'].drop(row_ids_to_delete)
     
     
     #abc = st.number_input('Row ID to deleteows',
