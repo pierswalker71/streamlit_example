@@ -31,6 +31,9 @@ def main():
         st.dataframe(data_original)
     
     data = data_original.copy()
+    
+    with st.expander('Current data'):
+        st.dataframe(data)
                                     
     
     st.subheader('Data Modification') 
