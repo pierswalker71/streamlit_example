@@ -39,18 +39,17 @@ def main():
             idx = [x for x in range(st.session_state['data'].index.max()+1,st.session_state['data'].index.max()+1+append_num)]
         else:
             idx = [x for x in range(0,append_num)]
-        st.write(f'rows to be added:')
-        st.dataframe(pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=append_num).tolist(), 
+            
+        new_rows = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=append_num).tolist(), 
                                                                'Param2':np.random.uniform(low=50, high=100, size=append_num).tolist()},
-                                                           index = idx))
+                                                           index = idx)
+        st.write(f'rows to be added:')
+        st.dataframe(new_rows)
         submit_append = False
         submit_append = st.button('Append rows')   
                                
     if submit_append:
-        st.session_state['data'] = pd.concat([st.session_state['data'],
-                                             pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=append_num).tolist(), 
-                                                               'Param2':np.random.uniform(low=50, high=100, size=append_num).tolist()},
-                                                           index = idx)])
+        st.session_state['data'] = pd.concat([st.session_state['data'],new_rows])
         #col_current_data.dataframe(st.session_state['data'])
         submit_append = False
     
