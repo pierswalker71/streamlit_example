@@ -34,8 +34,8 @@ def main():
     #=================================================================
     st.subheader('Data Modification') 
     
-    st.write(f'submit_append:{submit_append}')
-    st.write(f'submit_delete:{submit_delete}')
+    st.write(f'submit_append: {submit_append}')
+    st.write(f'submit_delete: {submit_delete}')
     
     with st.expander('Append new rows'):
         append_num = st.slider('Number of rows to add to bottom of table', min_value=1, max_value=5, value=1, step=1)
@@ -54,6 +54,7 @@ def main():
                                
     if submit_append:
         st.session_state['data'] = pd.concat([st.session_state['data'],new_rows])
+        st.session_state['data'] = st.session_state['data'].sort_index(inplace=True)
         #col_current_data.dataframe(st.session_state['data'])
         submit_append = False
     
