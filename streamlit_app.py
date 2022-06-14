@@ -6,6 +6,8 @@ def main():
     import pandas as pd
     import numpy as np
     from random import random 
+    
+
 
     # Settings
     st.set_page_config(page_title = 'Example App', initial_sidebar_state = 'expanded') 
@@ -14,8 +16,8 @@ def main():
     if 'data' not in st.session_state:
         st.session_state['data'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=3).tolist(), 
                                 'Param2':np.random.uniform(low=50, high=100, size=3).tolist()})
-    submit_delete = False
-    submit_append = False
+    #submit_delete = False
+    #submit_append = False
     
     #=================================================================
     # Title
@@ -57,6 +59,7 @@ def main():
         #st.session_state['data'] = st.session_state['data'].sort_index(inplace=True)
         #col_current_data.dataframe(st.session_state['data'])
         submit_append = False
+        st.experimental_rerun()
     
     #-----------------------------------------------------------------
     with st.expander('Delete rows'):
@@ -71,6 +74,7 @@ def main():
         st.session_state['data'] = st.session_state['data'].drop(row_ids_to_delete)
         #col_current_data.dataframe(st.session_state['data'])
         submit_delete = False
+        st.experimental_rerun()
 
      #-----------------------------------------------------------------   
         
