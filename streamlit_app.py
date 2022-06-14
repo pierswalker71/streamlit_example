@@ -28,9 +28,22 @@ def main():
     with st.expander('Current data'):
         st.dataframe(st.session_state['data'])
                                     
-    
+    #=================================================================
     st.subheader('Data Modification') 
     
+    with st.expander('Append new row'):
+        append_num = st.slider('Number of rows to add to bottom of table', min_value=1, max_value=5, value=1, step=1)
+
+    submit_append = False
+    submit_append = st.button('Append row')   
+    
+    if submit_append:
+        st.session_state['data'] = pd.concat([st.session_state['data'],
+                                             pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=append_num).tolist(), 
+                                                               'Param2':np.random.uniform(low=50, high=100, size=append_num).tolist()})])
+        submit_append = False
+    
+    #-----------------------------------------------------------------
     with st.expander('Delete rows'):
         row_ids_to_delete = st.multiselect('Select row IDs to delete',
                                            options=st.session_state['data'].index,
@@ -43,6 +56,8 @@ def main():
         st.session_state['data'] = st.session_state['data'].drop(row_ids_to_delete)
         submit_delete = False
 
+     #-----------------------------------------------------------------   
+        
 if __name__ == '__main__':
     main()
     
