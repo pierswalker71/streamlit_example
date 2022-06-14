@@ -44,10 +44,10 @@ def main():
         st.dataframe(pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=append_num).tolist(), 
                                                                'Param2':np.random.uniform(low=50, high=100, size=append_num).tolist()},
                                                            index = idx))
-        #st.session_state['data'] = pd.concat([st.session_state['data'],
-        #                                     pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=append_num).tolist(), 
-        #                                                       'Param2':np.random.uniform(low=50, high=100, size=append_num).tolist()},
-        #                                                   index = idx)])
+        st.session_state['data'] = pd.concat([st.session_state['data'],
+                                             pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=append_num).tolist(), 
+                                                               'Param2':np.random.uniform(low=50, high=100, size=append_num).tolist()},
+                                                           index = idx)])
         #col_current_data.dataframe(st.session_state['data'])
         submit_append = False
     
