@@ -51,7 +51,7 @@ def main():
                                            default=st.session_state['data'].index.min())
     
         submit_delete = False
-        submit_delete = st.button('Delete rows', disabled=len(st.session_state['data'].index)==0)  
+        submit_delete = st.button('Delete rows', disabled=len(st.session_state['data'].index)==1)  
         
     if submit_delete:    
         st.session_state['data'] = st.session_state['data'].drop(row_ids_to_delete)
