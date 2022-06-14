@@ -67,7 +67,7 @@ def main():
                                            options=st.session_state['data'].index,
                                            default=st.session_state['data'].index.min())
     
-        submit_delete = st.button('Delete rows', disabled=len(st.session_state['data'].index)==2) 
+        submit_delete = st.button('Delete rows', disabled=len(st.session_state['data'].index)==1) 
         
         
     if submit_delete:    
