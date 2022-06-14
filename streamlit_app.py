@@ -10,13 +10,12 @@ def main():
     # Settings
     st.set_page_config(page_title = 'Example App', initial_sidebar_state = 'expanded') 
     
-    #initialisation
-    #if 'data_original' not in st.session_state:
-    #    st.session_state['data_original'] = pd.DataFrame()
+    # Initialisation
     if 'data' not in st.session_state:
         st.session_state['data'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=10).tolist(), 
                                 'Param2':np.random.uniform(low=50, high=100, size=10).tolist()})
-
+        
+    #=================================================================
     # Title
     st.title('Example Streamlit App')
     st.write('Piers Walker 2022. https://github.com/pierswalker71')
