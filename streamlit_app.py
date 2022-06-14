@@ -45,7 +45,7 @@ def main():
                                                            index = idx)
         st.write(f'rows to be added:')
         st.dataframe(new_rows)
-        submit_append = False
+        #submit_append = False
         submit_append = st.button('Append rows')   
                                
     if submit_append:
@@ -59,8 +59,8 @@ def main():
                                            options=st.session_state['data'].index,
                                            default=st.session_state['data'].index.min())
     
-        submit_delete = False
-        submit_delete = st.button('Delete rows', disabled=len(st.session_state['data'].index)==1)  
+        submit_delete = st.button('Delete rows', disabled=len(st.session_state['data'].index)==1) 
+        
         
     if submit_delete:    
         st.session_state['data'] = st.session_state['data'].drop(row_ids_to_delete)
