@@ -23,9 +23,9 @@ def main():
 
     # Data
     st.subheader('Create data table') 
-    col_current_data = st.columns(1)
+    #col_current_data = st.columns(1)
     with st.expander('Current data'):
-        
+        st.dataframe(st.session_state['data'])
         col_current_data.write('test')
         #col_current_data.dataframe(st.session_state['data'])
                                     
