@@ -14,7 +14,8 @@ def main():
     if 'data' not in st.session_state:
         st.session_state['data'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=3).tolist(), 
                                 'Param2':np.random.uniform(low=50, high=100, size=3).tolist()})
-        
+    submit_delete = False
+    
     #=================================================================
     # Title
     st.title('Example Streamlit App')
