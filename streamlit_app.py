@@ -15,6 +15,7 @@ def main():
         st.session_state['data'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=3).tolist(), 
                                 'Param2':np.random.uniform(low=50, high=100, size=3).tolist()})
     submit_delete = False
+    submit_append = False
     
     #=================================================================
     # Title
@@ -46,7 +47,7 @@ def main():
                                                            index = idx)
         st.write(f'rows to be added:')
         st.dataframe(new_rows)
-        #submit_append = False
+        submit_append = False
         submit_append = st.button('Append rows')   
                                
     if submit_append:
