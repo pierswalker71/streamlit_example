@@ -35,7 +35,10 @@ def main():
     
     with st.expander('Append new rows'):
         append_num = st.slider('Number of rows to add to bottom of table', min_value=1, max_value=5, value=1, step=1)
-        idx = [x for x in range(int(st.session_state['data'].index.max()+1),int(st.session_state['data'].index.max()+1+append_num))]
+        if len(st.session_state['data'].index)>0:
+            idx = [x for x in range(st.session_state['data'].index.max()+1,st.session_state['data'].index.max()+1+append_num)]
+        else:
+            idx = [x for x in range(0,append_num)]
         st.write(f'rows to be added:')
         st.dataframe(pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=append_num).tolist(), 
                                                                'Param2':np.random.uniform(low=50, high=100, size=append_num).tolist()},
