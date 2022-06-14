@@ -34,6 +34,8 @@ def main():
     #=================================================================
     st.subheader('Data Modification') 
     
+    st.write(f'submit_append:{submit_append}')
+    st.write(f'submit_delete:{submit_delete}')
     
     with st.expander('Append new rows'):
         append_num = st.slider('Number of rows to add to bottom of table', min_value=1, max_value=5, value=1, step=1)
