@@ -25,7 +25,8 @@ def main():
     st.subheader('Create data table') 
     
     with st.expander('Current data'):
-        st.dataframe(st.session_state['data'])
+        col_current_data = st.columns(1)
+        col_current_data.dataframe(st.session_state['data'])
                                     
     #=================================================================
     st.subheader('Data Modification') 
@@ -43,6 +44,7 @@ def main():
                                              pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=append_num).tolist(), 
                                                                'Param2':np.random.uniform(low=50, high=100, size=append_num).tolist()},
                                                            index = idx)])
+        col_current_data.dataframe(st.session_state['data'])
         submit_append = False
     
     #-----------------------------------------------------------------
@@ -56,6 +58,7 @@ def main():
         
     if submit_delete:    
         st.session_state['data'] = st.session_state['data'].drop(row_ids_to_delete)
+        col_current_data.dataframe(st.session_state['data'])
         submit_delete = False
 
      #-----------------------------------------------------------------   
