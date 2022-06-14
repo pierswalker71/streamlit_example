@@ -54,7 +54,7 @@ def main():
                                
     if submit_append:
         st.session_state['data'] = pd.concat([st.session_state['data'],new_rows])
-        st.session_state['data'] = st.session_state['data'].sort_index(inplace=True)
+        #st.session_state['data'] = st.session_state['data'].sort_index(inplace=True)
         #col_current_data.dataframe(st.session_state['data'])
         submit_append = False
     
