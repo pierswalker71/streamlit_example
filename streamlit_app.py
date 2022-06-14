@@ -16,6 +16,11 @@ def main():
     if 'data' not in st.session_state:
         st.session_state['data'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=3).tolist(), 
                                 'Param2':np.random.uniform(low=50, high=100, size=3).tolist()})
+    
+    if 'new_rows' not in st.session_state:
+        st.session_state:['new_rows'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=3).tolist(), 
+                                        'Param2':np.random.uniform(low=50, high=100, size=3).tolist()})
+    
     submit_delete = False
     submit_append = False
     
@@ -46,16 +51,16 @@ def main():
         else:
             idx = [x for x in range(0,append_num)]
             
-        new_rows = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=append_num).tolist(), 
+        st.session_state:['new_rows'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=append_num).tolist(), 
                                                                'Param2':np.random.uniform(low=50, high=100, size=append_num).tolist()},
                                                            index = idx)
         st.write(f'rows to be added:')
-        st.dataframe(new_rows)
+        st.dataframe(st.session_state:['new_rows'])
         submit_append = False
         submit_append = st.button('Append rows')   
                                
     if submit_append:
-        st.session_state['data'] = pd.concat([st.session_state['data'],new_rows])
+        st.session_state['data'] = pd.concat([st.session_state['data'],st.session_state:['new_rows']])
         #st.session_state['data'] = st.session_state['data'].sort_index(inplace=True)
         #col_current_data.dataframe(st.session_state['data'])
         submit_append = False
