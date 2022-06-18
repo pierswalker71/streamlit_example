@@ -13,9 +13,10 @@ def main():
     st.set_page_config(page_title = 'Example App', initial_sidebar_state = 'expanded') 
     
     # Initialisation
+    num_initial_rows = 10
     if 'data' not in st.session_state:
-        st.session_state['data'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=3).tolist(), 
-                                'Param2':np.random.uniform(low=50, high=100, size=3).tolist()})
+        st.session_state['data'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=num_initial_rows).tolist(), 
+                                'Param2':np.random.uniform(low=50, high=100, size=num_initial_rows).tolist()})
     
     if 'new_rows' not in st.session_state:
         st.session_state['new_rows'] = pd.DataFrame(data = {'Param1':np.random.uniform(low=0, high=10, size=3).tolist(), 
